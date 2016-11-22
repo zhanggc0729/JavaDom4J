@@ -117,8 +117,6 @@ public class Dom4jBeanToXml {
 	return "";
     }
     /**
-     * 可以使bean按照排序，进行操作
-     * 存在的问题：当被排序的索引大于10 就不好用了
       *   @author  zhanggc@qianbaocard.com
       *   @time:2016年11月18日 上午10:41:59
       *   @Description:
