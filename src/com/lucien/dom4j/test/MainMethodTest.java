@@ -42,14 +42,20 @@ public class MainMethodTest {
 	frxbfj.setCommon(common);
 	Business business = new Business();
 	for(Field field :business.getClass().getDeclaredFields()){
-	    Method method = business.getClass().getDeclaredMethod("set" +field.getName().substring(0, 1) .toUpperCase() +field.getName().substring(1),String.class);
-	    method.setAccessible(true);
-	    method.invoke(business, String.valueOf(i++));
+	    System.out.println(i+""+i%2);
+	    if(i%2!=0){
+		
+		Method method = business.getClass().getDeclaredMethod("set" +field.getName().substring(0, 1) .toUpperCase() +field.getName().substring(1),String.class);
+		method.setAccessible(true);
+		
+		method.invoke(business, String.valueOf(i++));
+	    }
+	    i++;
 	}
 	frxbfj.setBusiness(business);
 	
 	System.out.println(frxbfj.toString());
-	//Dom4jBeanToXml.beanToXml(frxbfj);
-	Dom4jBeanToXml .getEncrypt(frxbfj);
+	Dom4jBeanToXml.beanToXml(frxbfj);
+	//Dom4jBeanToXml .getEncrypt(frxbfj);
     }
 }

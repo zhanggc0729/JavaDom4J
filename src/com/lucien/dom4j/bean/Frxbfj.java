@@ -1,12 +1,14 @@
 package com.lucien.dom4j.bean;
 
 import com.lucien.dom4j.annotation.XMLField;
+import com.lucien.dom4j.annotation.XMLRoot;
 
 /**
   *   @author  zhanggc@qianbaocard.com
   *   @time:2016年11月17日 下午2:07:02
   *   @Description:
 */
+@XMLRoot(name="frxbfj")
 public class Frxbfj {
     @XMLField(hasNextLevel=true,ordinal=1)
     private Common common;

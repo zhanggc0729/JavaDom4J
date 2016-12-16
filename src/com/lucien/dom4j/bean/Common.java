@@ -24,23 +24,10 @@ public class Common {
     private String  authNo;
     @XMLField(ordinal=8)
     private String  bsType;
-    @XMLField(ordinal=11)
+    @XMLField(ordinal=99)
     private String sign;
-    @XMLField(ordinal=10,hasNextLevel=true)
-    private Demo demo;
     
-    /**
-     * @return the demo
-     */
-    public Demo getDemo() {
-        return demo;
-    }
-    /**
-     * @param demo the demo to set
-     */
-    public void setDemo(Demo demo) {
-        this.demo = demo;
-    }
+ 
     /**
      * @return the transCode
      */

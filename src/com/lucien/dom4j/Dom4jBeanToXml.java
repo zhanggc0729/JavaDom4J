@@ -23,7 +23,7 @@ public class Dom4jBeanToXml {
 
     public static <T> String beanToXml( T object) {
 	Document doc = DocumentHelper.createDocument();
-	Element root = doc.addElement(object.getClass().getSimpleName());
+	Element root = doc.addElement(object.getClass().getSimpleName().toLowerCase());
 	Dom4jBeanToXml dom4jBeanToXml = new Dom4jBeanToXml();
 	try {
 	    dom4jBeanToXml.generateElement(object.getClass(), object, root);
@@ -32,7 +32,7 @@ public class Dom4jBeanToXml {
 	    e.printStackTrace();
 	}
 	System.out.println(doc.asXML());
-	return "";
+	return doc.asXML();
     }
     private void generateElement(Class<? extends Object> class1, Object invoke2, Element root) throws Exception {
 	Field[] fields = class1.getDeclaredFields();
@@ -70,13 +70,18 @@ public class Dom4jBeanToXml {
 	    }
 	    Method method = class1
 		    .getMethod("get" + field.getName().substring(0, 1).toUpperCase() + field.getName().substring(1));
-	    Element addElement = root.addElement(name);
+	   
 	    if (annotation != null && annotation.hasNextLevel()) {
+		 Element addElement = root.addElement(name);
 		method.setAccessible(true);
 		Object invoke = method.invoke(invoke2);
 		generateElement(invoke.getClass(), invoke, addElement);
 	    } else {
-		addElement.setText(method.invoke(invoke2).toString());
+		Object invoke = method.invoke(invoke2);
+		if(invoke!= null){
+		    Element addElement = root.addElement(name);
+		    addElement.setText(method.invoke(invoke2).toString());
+		}
 	    }
 	}
     }
